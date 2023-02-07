@@ -30,11 +30,9 @@ $(NAME): $(LIBS) $(MLX42) $(MAN_OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBS):
-	@if [ ! -d "./libs" ]; then git clone https://github.com/Christwelve/libs; fi
 	@make --silent -C libs
 
 $(MLX42):
-	@if [ ! -d "./MLX42" ]; then git clone https://github.com/codam-coding-college/MLX42.git; fi
 	@make --silent -C MLX42
 
 # $(OBJF):
