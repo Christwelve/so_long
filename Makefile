@@ -17,7 +17,6 @@ LIBS		=	libs/libs.a
 MLX42		=	MLX42/libmlx42.a
 
 
-
 # RULES
 
 all: $(NAME)
@@ -30,13 +29,12 @@ $(NAME): $(LIBS) $(MLX42) $(MAN_OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBS):
+	@if [ ! -d "./libs" ]; then git clone https://github.com/Christwelve/libs.git; fi
 	@make --silent -C libs
 
 $(MLX42):
+	@if [ ! -d "./MLX42" ]; then git clone https://github.com/Christwelve/MLX42.git; fi
 	@make --silent -C MLX42
-
-# $(OBJF):
-# 	@mkdir -p $(OBJ_DIR)
 
 clean:
 	$(RM) $(MAN_OBJ)
@@ -54,4 +52,3 @@ re: fclean all
 	@echo "\033[0;32m*** Cleaned and rebuilt libs! ***\033[0m"
 
 .PHONY:  test clean fclean re all
-
