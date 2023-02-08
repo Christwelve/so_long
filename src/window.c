@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:20:42 by cmeng             #+#    #+#             */
-/*   Updated: 2023/02/07 17:07:23 by cmeng            ###   ########.fr       */
+/*   Updated: 2023/02/08 09:54:21 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	ft_create_window(t_map *map)
 	ft_printf("\n\n%s\n", "\033[32mWelcome to 10 rules of 42 Heilbronn!");
 	ft_printf("%s", "\033[37mHelp little Ole collect all the rules");
 	ft_printf("%s\n\n\n", " and find the exit in cluster 1!");
-	mlx_key_hook(map->window, &my_keyhook, map);
-	mlx_loop(map->window);
-	mlx_terminate(map->window);
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 static int	ft_create_textures(t_map *map)

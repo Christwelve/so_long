@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:04:41 by cmeng             #+#    #+#             */
-/*   Updated: 2023/02/07 15:54:19 by cmeng            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:12:45 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_check_map(t_map *map, int fd)
 		map->height++;
 	}
 	if (ft_valid_map(map))
-		return (1);
+		return (free(map->map), free(tmp), 1);
 	return (free(tmp), 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:29:23 by cmeng             #+#    #+#             */
-/*   Updated: 2023/02/07 17:48:36 by cmeng            ###   ########.fr       */
+/*   Updated: 2023/02/08 10:42:28 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int	main(int argc, char **argv)
 	if (ft_check_flood(&map))
 		return (ft_printf("%s\n", "\033[31mError:\033[37m C or E not reachable"));
 	ft_create_window(&map);
+	mlx_key_hook(map.window, &my_keyhook, &map);
+	mlx_loop(map.window);
+	mlx_terminate(map.window);
 	return (0);
 }
 
@@ -63,6 +66,7 @@ static int	ft_check_flood(t_map *map)
 	flood.exit = 0;
 	map_dup = ft_strdup(map->map);
 	ft_flood(pos, map->width, map_dup, &flood);
+	free(map_dup);
 	if (flood.collect != map->score)
 		return (1);
 	if (flood.exit != 1)
