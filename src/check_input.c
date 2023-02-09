@@ -6,7 +6,7 @@
 /*   By: cmeng <cmeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:04:41 by cmeng             #+#    #+#             */
-/*   Updated: 2023/02/08 10:12:45 by cmeng            ###   ########.fr       */
+/*   Updated: 2023/02/09 12:50:29 by cmeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ft_check_map(t_map *map, int fd)
 		map->width = ft_strlen(tmp);
 		if (tmp[map->width - 1] == '\n')
 			map->width--;
+		if (map->width == 0)
+			return (free(map->map), free(tmp), 1);
 		if (x != -1 && map->width != x)
 			return (free(map->map), free(tmp), 1);
 		x = map->width;
