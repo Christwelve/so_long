@@ -16,6 +16,9 @@ MAN_OBJ		=	$(MAN_FILES:.c=.o)
 LIBS		=	libs/libs.a
 MLX42		=	MLX42/libmlx42.a
 
+GREEN		= 	\033[0;32m
+WHITE		=	\033[0m
+
 
 # RULES
 
@@ -23,7 +26,7 @@ all: $(NAME)
 
 $(NAME): $(LIBS) $(MLX42) $(MAN_OBJ)
 	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(MAN_OBJ) $(LIBS) $(MLX42) $(INCLUDE)
-	@echo "\033[0;32m*** so_long compiled!***\033[0m"
+	@echo "$(GREEN)*** so_long compiled!***$(WHITE)"
 
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -40,15 +43,15 @@ clean:
 	$(RM) $(MAN_OBJ)
 	make clean --silent -C libs
 	make clean --silent -C MLX42
-	@echo "\033[0;32m*** Object files cleaned! ***\033[0m"
+	@echo "$(GREEN)*** Object files cleaned! ***$(WHITE)"
 
 fclean: clean
 	$(RM) $(NAME)
 	make fclean --silent -C libs
 	make fclean --silent -C MLX42
-	@echo "\033[0;32m*** Executable (.a) file cleaned! ***\033[0m"
+	@echo "$(GREEN)*** Executable (.a) file cleaned! ***$(WHITE)"
 
 re: fclean all
-	@echo "\033[0;32m*** Cleaned and rebuilt libs! ***\033[0m"
+	@echo "$(GREEN)*** Cleaned and rebuilt libs! ***$(WHITE)"
 
 .PHONY:  test clean fclean re all
